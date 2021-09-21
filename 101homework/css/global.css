@@ -1,0 +1,35 @@
+.topnav {
+    overflow: hidden;
+    
+    position: relative;
+    text-align: center;
+}
+.topnav a {
+    color: rgb(255, 255, 255);
+    text-shadow: black;
+    padding: 20px 50px;
+    text-decoration: none;
+    font-size: 35px;
+    display: flexbox;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+h1{
+    text-align: center;
+    font-size: 150px;
+    font-family: 'Share Tech Mono', monospace;
+    color: black;
+}
+h1 a{
+    text-align: center;
+    font-size: 150px;
+    font-family: 'Share Tech Mono', monospace;
+    color: black;
+}
+body {
+    background-image: url('https://wallpaperaccess.com/full/234830.jpg');
+}
+
+
+
