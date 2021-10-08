@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+
+    <style>
+        body{
+            margin: 0px;
+            padding: 20px;
+            background-image: url('https://i.pinimg.com/originals/6d/df/89/6ddf89a95cc31286387b11c64c1991a8.jpg')
+        }
+
+        #form-group{
+            padding-top: 20px
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="form-group" class="row justify-content-center">        
+        <div class="col-3 row justify-content-center ">
+            <input type="search" class="form-control text-center" id="cityName" placeholder="Enter a city">
+            <button id="searchBtn" class="col-4 mt-3">Search</button>
+        </div>        
+    </div>
+    <div class="d-flex justify-content-center row align-items-center mt-3">
+        <div id="city" class="text-center">  </div>
+        <div id="temp" class="text-center">  </div>
+        <div id="feels" class="text-center">  </div>
+        <div id="humid" class="text-center">  </div>
+    </div>
+
+
+
+
+    <script>
+
+        let cityName = document.getElementById('cityName')         
+        let searchBtn = document.querySelector('#searchBtn')
+        searchBtn.addEventListener('click', (e) => {               
+            console.log('clicked');
+            console.log(cityName);
+            fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName.value.toLowerCase()}&appid=9361bd03ec7175e9eea92fdf7a717518`)
+            .then(response => response.json() )
+            .then(data =>{
+                //city name
+                let city = data.name
+                let cityNames = document.querySelector('#city')
+                cityNames.textContent = `${city}`
+                //farenheit & celsius
+                let kelvin = data.main.temp; 
+                let degC = Math.floor(kelvin - 273.15);
+                let degF = Math.floor((degC * 1.8) + 32);
+                console.log(degF)
+                let temp = document.querySelector('#temp')
+                temp.textContent = `Temperature: ${degF}ºF / ${degC}ºC`
+                //FEELS LIKE
+                let feelsLike = data.main.feels_like
+                let feelsLikeC = Math.floor(kelvin - 273.15);
+                let feelsLikeF = Math.floor((feelsLikeC * 1.8) + 32);
+                let feels = document.querySelector('#feels')
+                feels.textContent = `Feels Like: ${feelsLikeF}ºF / ${feelsLikeC}ºC`
+                //HUMIDITY
+                let humidity = data.main.humidity                
+                let humid = document.querySelector('#humid')
+                humid.textContent = `Humidity: ${humidity}%`
+            })
+        })
+
+
+    </script>
+</body>
+</html>
