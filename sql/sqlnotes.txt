@@ -1,0 +1,91 @@
+-- CREATE DATABASE sept2021;
+
+-- DROP DATABASE sept2021;
+	
+
+-- CREATE TABLE baseball (
+-- 	name varchar,
+--   	city varchar,
+--   	wins integer
+-- );
+
+-- CREATE TABLE student (
+--   	name varchar,
+--   	website varchar,
+--   	github_username varchar,
+--   	points integer,
+--   	gender char(1),
+--   	cohort_start_date date,
+--   	graduated boolean
+--   );
+-- INSERT INTO student VALUES (
+--   	'Sam', 'sam@me.com', 'davis@github.com', 27, 'M', '2021-10-25', FALSE
+--   );
+
+-- CREATE TABLE student2 (
+--   	id SERIAL NOT NULL PRIMARY KEY,
+--   	name varchar,
+--   	website varchar,
+--   	github_username varchar,
+--   	points integer,
+--   	gender char(1),
+--   	cohort_start_date date,
+--   	graduated boolean
+--   );
+
+-- INSERT INTO student2 VALUES
+
+-- (DEFAULT, 'Sam', 'sam@dc.com', 'sam', 14, 'M', '2021-01-06', FALSE),
+-- (DEFAULT, 'Hunter', 'hunter@dc.com', 'hunter', 12, 'M', '2021-01-05', TRUE),
+-- (DEFAULT, 'Devin', 'devin@dc.com', 'devin', 21, 'M', '2021-01-01', FALSE),
+-- (DEFAULT, 'Emily', 'emily@dc.com', 'emily', 10, 'F', '2021-10-06', FALSE),
+-- (DEFAULT, 'Victoria', 'victoria@dc.com', 'victoria', 14, 'F', '2021-08-05', TRUE),
+-- (DEFAULT, 'Christine', 'christine@dc.com', 'christine', 55, 'F', '2021-01-29', FALSE);
+
+
+-- UPDATE student2 SET points = 50 WHERE id = 2
+
+-- DELETE FROM student2 WHERE id = 6
+
+-- INSERT INTO student2 VALUES
+--   (DEFAULT, 'Sam', 'sam@dc.com', 'sam', 14, 'M', '2021-01-06', FALSE)
+
+-- CREATE TABLE studentConstraints (
+--   id SERIAL NOT NULL PRIMARY KEY,
+--   name varchar,
+--   github varchar UNIQUE NOT NULL,
+--   points integer DEFAULT 0 CHECK (points >= 0),
+--   start_date date NOT NULL,
+--   graduated boolean DEFAULT FALSE
+-- );
+
+-- INSERT INTO studentConstraints VALUES (
+--   DEFAULT, 'mickey mouse', 'mickey', 1, '2021-01-06'
+--   )
+
+-- SELECT * FROM student2;
+
+-- SELECT name, website, gender FROM student2
+
+-- SELECT name, points FROM student2 WHERE gender = 'M'
+
+-- SELECT * FROM student2 WHERE points > 10 AND gender='F'
+
+-- SELECT * FROM student2 WHERE name ILIKE '%em%'
+
+-- ALTER TABLE student2 ADD city varchar(25)
+
+-- ALTER TABLE student2 ADD isValid boolean DEFAULT FALSE
+
+-- SELECT Count(city) FROM student2;
+
+-- SELECT SUM(points) FROM student2;
+
+-- SELECT MAX(points) FROM student2
+
+-- SELECT * FROM student2 ORDER BY name DESC;
+
+-- SELECT name, gender FROM student2 ORDER BY gender, name ASC
+
+-- SELECT * FROM student2 ORDER BY name ASC LIMIT 2 OFFSET 2
+
