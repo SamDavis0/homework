@@ -130,27 +130,50 @@
 -- INNER JOIN tech ON project_uses_tech.tech_id = tech.id
 -- WHERE project.name = 'Personal Website'
 --3
-
-SELECT tech.name FROM tech
-LEFT OUTER JOIN project_uses_tech ON project_uses_tech.tech_id = tech.id
-INNER JOIN project ON project.id = project_uses_tech.project_id
-WHERE project.name = NULL
-
-
-
-
-
-
-
+-- SELECT * FROM tech
+-- LEFT OUTER JOIN project_uses_tech ON tech.id = tech_id
+-- WHERE project_id IS NULL
+--4
+-- SELECT tech.name, COUNT(*) FROM tech
+-- LEFT OUTER JOIN project_uses_tech ON tech.id = tech_id
+-- GROUP BY tech.id
+--5
+-- SELECT * FROM project
+-- LEFT OUTER JOIN project_uses_tech ON project.id = project_id
+-- WHERE tech_id IS NULL
+--6
+-- SELECT tech.name, COUNT(tech.name) AS project_count FROM project
+-- LEFT OUTER JOIN project_uses_tech ON project.id = project_id
+-- INNER JOIN tech ON tech.id = tech_id
+-- GROUP BY tech.name
 --7
 -- SELECT project.name, tech.name FROM project
 -- INNER JOIN project_uses_tech ON project.id = project_uses_tech.project_id
 -- INNER JOIN tech ON project_uses_tech.tech_id = tech.id
-
-
-
-
-
-
-
-
+--8
+-- SELECT tech.name FROM tech
+-- INNER JOIN project_uses_tech ON tech.id = tech_id
+-- GROUP BY tech.name
+--9
+-- SELECT tech.name FROM tech
+-- LEFT OUTER JOIN project_uses_tech ON tech.id = tech_id
+-- WHERE project_id IS NULL
+--10
+-- SELECT project.name FROM project
+-- INNER JOIN project_uses_tech ON project.id = project_id
+-- GROUP BY project.name
+--11
+-- SELECT * FROM project
+-- LEFT OUTER JOIN project_uses_tech ON project.id = project_id
+-- WHERE tech_id IS NULL
+--12
+-- SELECT project.name, COUNT(tech_id) AS tech_count FROM project
+-- LEFT OUTER JOIN project_uses_tech ON project.id = project_id
+-- GROUP BY project.name 
+-- ORDER BY COUNT(tech_id) DESC
+--13
+-- SELECT tech.name, COUNT(project_id) AS project_count FROM tech
+-- LEFT OUTER JOIN project_uses_tech ON tech.id = tech_id
+-- GROUP BY tech.name
+-- ORDER BY COUNT(project_id) DESC
+--14
