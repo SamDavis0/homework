@@ -57,9 +57,9 @@
 
 -- SELECT Count(name) FROM restaurant
 
--- SELECT Count(category) FROM restaurant
+-- SELECT Count(category), category FROM restaurant GROUP BY category
 
--- SELECT AVG(stars) FROM restaurant
+-- SELECT category, AVG(stars) FROM restaurant GROUP BY category
 
 -- SELECT category FROM restaurant WHERE stars >= 5
 
